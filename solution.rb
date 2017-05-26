@@ -1,15 +1,13 @@
 require "sinatra"
 
+counter = 0
 get "/" do
+  @count = counter
   erb :index
 end
 
-post "/response" do
-  texto = params[:textoabuela]
-  if texto == texto.upcase
-    @message = { message: "Ahhh si, manzanas!" }
-  else
-    @message = { message: "Habla más duro mijito" }
-  end
-  erb :response
+post "/" do
+  counter += params[:number].to_i
+  @count = counter
+  erb :index
 end
