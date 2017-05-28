@@ -1,5 +1,9 @@
 require "sinatra"
 
 get "/" do
-  "#{request.user_agent}"
+  if env["HTTP_PERMISO"]
+    "Si lo logramos"
+  else
+    "Sin permiso"
+  end
 end
